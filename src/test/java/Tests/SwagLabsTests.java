@@ -30,4 +30,13 @@ public class SwagLabsTests extends BasicTest{
         loginPage.waitForErrorMessageUsernameAndPasswordNoUserWithThese();
     }
 
+    @Test(priority = 4, retryAnalyzer =  SwagLabsRetry.class)
+    private void verifyErrorIsDisplayedWhenUserIsLocked(){
+        String username = "locked_out_user";
+        String password = "secret_sauce";
+        loginPage.getUsernameInputField().sendKeys(username);
+        loginPage.getPasswordInputField().sendKeys(password);
+        loginPage.getLoginButton().click();
+        loginPage.waitForErrorMessageLockedOutUser();
+    }
 }
