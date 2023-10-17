@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class InventoryPage extends BasicPage {
     public InventoryPage(WebDriver driver, WebDriverWait wait) {
@@ -29,5 +30,18 @@ public class InventoryPage extends BasicPage {
 
     public WebElement getLogoutButtonFromBurgerMenu() {
         return driver.findElement(By.cssSelector("[id=logout_sidebar_link]"));
+    }
+
+    public WebElement getProductById(String selector) {
+        return driver.findElement(By.cssSelector(selector));
+    }
+
+    public void didRemoveButtonOfItemAppear(String removeButtonProductId) {
+        Assert.assertTrue(driver.findElement(By.cssSelector(removeButtonProductId)).isDisplayed(),
+                "remove button does not appear, but it should");
+    }
+
+    public String getNumberOfItemsInCart() {
+        return driver.findElement(By.xpath("//span[@class='shopping_cart_badge']")).getText();
     }
 }

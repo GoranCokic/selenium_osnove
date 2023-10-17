@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -24,5 +26,11 @@ public abstract class BasicPage {
         boolean elementExists = !driver.findElements(by).isEmpty();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         return elementExists;
+    }
+
+    public void scrollToThing(WebElement scrollToThis) {
+        new Actions(driver)
+                .scrollToElement(scrollToThis)
+                .perform();
     }
 }
