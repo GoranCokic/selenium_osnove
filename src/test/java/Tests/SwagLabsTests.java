@@ -1,6 +1,5 @@
 package Tests;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import p_05_10_2023.SwagLabsRetry;
 
