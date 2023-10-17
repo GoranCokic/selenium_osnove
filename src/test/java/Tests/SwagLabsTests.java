@@ -39,4 +39,6 @@ public class SwagLabsTests extends BasicTest{
         loginPage.getLoginButton().click();
         loginPage.waitForErrorMessageLockedOutUser();
     }
+
+
 }
