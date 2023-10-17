@@ -52,6 +52,7 @@ public class SwagLabsTests extends BasicTest {
         inventoryPage.waitForBurgerMenuToFinishSliding();
         inventoryPage.waitLogoutButtonFromBurgerMenuToAppear();
         inventoryPage.getLogoutButtonFromBurgerMenu().click();
+        urlPage.waitForUrlToBeLoginForm();
     }
 
     @Test(priority = 6, retryAnalyzer = SwagLabsRetry.class)
