@@ -9,7 +9,7 @@ public class SwagLabsTests extends BasicTest{
 
     @Test(priority = 1, retryAnalyzer =  SwagLabsRetry.class)
     private void verifyErrorIsDisplayedWhenUsernameIsMissing() {
-        loginPage.getLoginForm().click();
+        loginPage.getLoginButton().click();
         loginPage.waitForErrorMessage();
     }
 

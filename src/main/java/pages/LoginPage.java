@@ -11,13 +11,16 @@ public class LoginPage extends BasicPage {
         super(driver, wait);
     }
 
-    public WebElement getLoginForm(){
+    public WebElement getLoginButton() {
         return driver.findElement(By.cssSelector("[value='Login'"));
     }
-    public void waitForErrorMessage(){
+
+    public void waitForErrorMessage() {
         wait
                 .withMessage("|||TEXT: 'Epic sadface: Username is required' did not appear.")
                 .until(ExpectedConditions.presenceOfElementLocated(
                         By.xpath("//h3[contains(text(),'Username is required')]")));
     }
+
+
 }
