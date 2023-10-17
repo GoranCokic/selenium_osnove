@@ -15,7 +15,7 @@ public class LoginPage extends BasicPage {
         return driver.findElement(By.cssSelector("[value='Login'"));
     }
 
-    public void waitForErrorMessageUsername() {
+    public void waitForErrorMessageUsernameIsMissing() {
         wait
                 .withMessage("|||TEXT: 'Epic sadface: Username is required' did not appear.")
                 .until(ExpectedConditions.presenceOfElementLocated(
@@ -26,10 +26,21 @@ public class LoginPage extends BasicPage {
         return driver.findElement(By.cssSelector("[placeholder='Username']"));
     }
 
-    public void waitForErrorMessagePassword(){
+    public void waitForErrorMessagePasswordIsMissing(){
         wait
                 .withMessage("|||TEXT: 'Epic sadface: Password is required' did not appear.")
                 .until(ExpectedConditions.presenceOfElementLocated(
                         By.xpath("//h3[contains(text(),'Password is required')]")));
+    }
+
+    public WebElement getPasswordInputField(){
+        return driver.findElement(By.cssSelector("[placeholder='Password']"));
+    }
+
+    public void waitForErrorMessageUsernameAndPasswordNoUserWithThese(){
+        wait
+                .withMessage("|||TEXT: 'Epic sadface: Password is required' did not appear.")
+                .until(ExpectedConditions.presenceOfElementLocated(
+                        By.xpath("//h3[contains(text(),'Username and password do not match')]")));
     }
 }
