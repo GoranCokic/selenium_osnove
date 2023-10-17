@@ -9,7 +9,9 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import pages.InventoryPage;
 import pages.LoginPage;
+import pages.UrlPage;
 
 import java.time.Duration;
 
@@ -17,6 +19,8 @@ public abstract class BasicTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected LoginPage loginPage;
+    protected UrlPage urlPage;
+    protected InventoryPage inventoryPage;
 
     @BeforeClass
     protected void beforeClass() {
@@ -25,7 +29,9 @@ public abstract class BasicTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        loginPage = new LoginPage(driver,wait);
+        loginPage = new LoginPage(driver, wait);
+        urlPage = new UrlPage(driver, wait);
+        inventoryPage = new InventoryPage(driver, wait);
     }
 
     @BeforeMethod
@@ -37,7 +43,7 @@ public abstract class BasicTest {
     @AfterMethod
     protected void afterMethod() throws InterruptedException {
         driver.manage().deleteAllCookies();
-        ((JavascriptExecutor)(driver)).executeScript( String.format(
+        ((JavascriptExecutor) (driver)).executeScript(String.format(
                 "window.localStorage.removeItem('%s');", "cart-contents"));
     }
 

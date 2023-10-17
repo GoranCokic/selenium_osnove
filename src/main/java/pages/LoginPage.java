@@ -51,4 +51,5 @@ public class LoginPage extends BasicPage {
                 .until(ExpectedConditions.presenceOfElementLocated(
                         By.xpath("//h3[contains(text(),'this user has been locked')]")));
     }
+
 }

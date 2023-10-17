@@ -39,4 +39,18 @@ public class SwagLabsTests extends BasicTest {
         loginPage.getLoginButton().click();
         loginPage.waitForErrorMessageLockedOutUser();
     }
+
+    @Test(priority = 5, retryAnalyzer = SwagLabsRetry.class)
+    private void verifySuccessfulLogin() {
+        String username = "standard_user";
+        String password = "secret_sauce";
+        loginPage.getUsernameInputField().sendKeys(username);
+        loginPage.getPasswordInputField().sendKeys(password);
+        loginPage.getLoginButton().click();
+        urlPage.waitForUrlToBeInventory();
+        inventoryPage.getSideBurgerMenu().click();
+        inventoryPage.waitForBurgerMenuToFinishSliding();
+        inventoryPage.waitLogoutButtonFromBurgerMenuToAppear();
+        inventoryPage.getLogoutButtonFromBurgerMenu().click();
+    }
 }
