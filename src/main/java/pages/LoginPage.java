@@ -15,12 +15,21 @@ public class LoginPage extends BasicPage {
         return driver.findElement(By.cssSelector("[value='Login'"));
     }
 
-    public void waitForErrorMessage() {
+    public void waitForErrorMessageUsername() {
         wait
                 .withMessage("|||TEXT: 'Epic sadface: Username is required' did not appear.")
                 .until(ExpectedConditions.presenceOfElementLocated(
                         By.xpath("//h3[contains(text(),'Username is required')]")));
     }
 
+    public WebElement getUsernameInputField(){
+        return driver.findElement(By.cssSelector("[placeholder='Username']"));
+    }
 
+    public void waitForErrorMessagePassword(){
+        wait
+                .withMessage("|||TEXT: 'Epic sadface: Password is required' did not appear.")
+                .until(ExpectedConditions.presenceOfElementLocated(
+                        By.xpath("//h3[contains(text(),'Password is required')]")));
+    }
 }
